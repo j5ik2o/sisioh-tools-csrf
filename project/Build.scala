@@ -5,7 +5,7 @@ object ProjectBuild extends Build {
   val appDependencies = Seq(
     // Add your project dependencies here,
     "commons-codec" % "commons-codec" % "1.4",
-    "javax.servlet" % "servlet-api" % "2.4"
+    "javax.servlet" % "servlet-api" % "2.4" % "provided"
   )
 
   lazy val root = Project(
