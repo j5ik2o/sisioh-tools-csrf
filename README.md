@@ -5,8 +5,9 @@
  - トークンの検証
 
 ```scala
+val csrfToken = CsrfToken("hoge.fuga.token")
 // トークンの生成とセッションへの格納
-val token = CsrfToken().generate(httpRequest)
+val token = csrfToken.generate(httpRequest)
 // トークンの検証
-CsrfToken().validate(httpRequest, token)
+csrfToken.validate(httpRequest, token)
 ```
