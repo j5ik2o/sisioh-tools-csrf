@@ -9,10 +9,25 @@ import java.security.SecureRandom
  * @author junichi_kato
  */
 trait TokenGenerator {
+  /**
+   * トークンを生成する。
+   *
+   * @return トークンを表す文字列
+   */
   def generate: String
 }
 
+/**
+ * コンパニオンオブジェクト。
+ *
+ * @author junichi_kato
+ */
 object TokenGenerator {
+  /**
+   * ファクトリメソッド。
+   *
+   * @return [[org.sisioh.tools.csrf.TokenGenerator]]
+   */
   def apply(): TokenGenerator =
     new DefaultTokenGenerator
 }
@@ -30,11 +45,7 @@ class DefaultTokenGenerator
   // 初期化時に強制的にシードする
   secureRandom.nextBytes(Array.fill[Byte](1)(0))
 
-  /**
-   * トークンを生成する。
-   *
-   * @return トークンを表す文字列
-   */
+
   def generate = {
     val bytes = new Array[Byte](TOKEN_BYTES_LENGTH);
     secureRandom.nextBytes(bytes);
